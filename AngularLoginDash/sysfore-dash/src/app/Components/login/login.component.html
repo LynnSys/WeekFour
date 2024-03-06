@@ -1,0 +1,56 @@
+<link rel="stylesheet" href="login.component.css">
+    <div class="inner-body w-100 align-items-center justify-content-center vh-100">
+        <div class="container-fluid bgwhite d-flex align-items-center justify-content-center vh-100">
+            <div class="login-card height-auto p-4 my-2 bg-white">
+                <div class="login-card-header" id="login-header">
+                    <h5 class="fw-bold my-1">Login</h5>
+                    <p>Hello welcome to Lorem Ipsum is simply a dummy text</p>
+                </div>
+
+
+                <form [formGroup] = "loginForm">
+                    <div class = "data-entry d-flex-column my-2">
+
+                    <label class ="username fw-bold my-2 w-100">Username</label>
+
+                    <input class='w-100 py-3 px-2' 
+                    style='height: 15px;' 
+                    type="text" 
+                    placeholder="yourname123@gmail.com"
+                    formControlName ="username"/>
+
+                    @if(username?.errors?.['required']){
+                        <span>Username is Required</span>
+                    }
+                    @else if(username?.errors?.['minLength(4)']){
+                        <span>Username must be at least 4 characters. </span>
+                    }
+                    @else if(username?.errors?.['email']){
+                        <span>Username must be an e-mail ID. </span>
+                    }
+                    
+
+                    <label class ="password fw-bold my-2 w-100">Password</label>
+                    
+                    <input class='w-100 py-3 px-2' 
+                    style='height: 15px;' 
+                    type="password" 
+                    placeholder="***********"
+                    formControlName="password"
+                    />
+                    @if(password?.errors?.['required']){
+                        <span>Password is Required</span>
+                    }
+                    @else if(password?.dirty && password?.touched){
+                        <span>Password must be at least 8 characters. </span>
+                    }
+                    
+                    <button type="submit" (click)="moveTo()" [disabled]="!loginForm.valid" class="border-0 py-3 w-100 mt-3 py-3 text-light">Login your account</button>
+                </div> 
+                </form>
+            </div>
+            
+
+        </div>
+
+    </div>
