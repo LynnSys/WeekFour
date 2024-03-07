@@ -1,1 +1,69 @@
-<p>products works!</p>
+  
+  <header>
+    <div class="logo-header d-flex space-around align-items-center py-1 px-3">
+      <img class="logo" src="./assets/images/main-logo.svg" alt="logo">
+      <div class="side-header text-light p-2">
+        <div class="username-name fw-bold">Mithun P</div>
+          <div class="greetings">Hello Welcome</div>
+        </div>
+      </div>
+    <div class="col">
+      <ul class="nav justify-content-start py-2 px-3">
+        <li class="nav-item">
+          <a class="nav-link fw-bold active" href="./dashboard">DASHBOARD</a>
+        <li>
+        <li class="nav-item">
+          <a class="nav-link fw-bold active" href="./products">PRODUCTS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-bold active" href="#">LOGOUT</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+  <div class="container bg-light m-5 p-4">
+    <div class="heading d-flex space-around">
+      <div class="heading-left">
+        <h5 class="fw-bold m-0">Product List</h5>
+        <p style="font-size:12px;">View and add all your products here</p>
+      </div>
+      <div class="heading-right">
+        <a href="#" class="btn btn-primary" style="color:whitesmoke">Add Products</a>
+      </div>
+      
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">TITLE</th>
+          <th scope="col">PRICE</th>
+          <th scope="col">RATING</th>
+          <th scope="col">BRAND</th>
+          <th scope="col">ACTION</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (prod of prods; track prod.id){
+          <tr>
+            <th scope="row">{{prod.id}}</th>
+            <td>{{prod.title}}</td>
+            <td>{{prod.price}}</td>
+            <td>{{prod.rating}}</td>
+            <td>{{prod.brand}}</td>
+            <td style="font-size: 5px;">
+              <button type="button" class="m-1 btn btn-warning" style="font-size: 14px;">Edit</button>
+              <button type="button" class="m-1 p-1 btn btn-danger" style="font-size: 14px;">Delete</button>
+            </td>
+          </tr>
+        }
+        
+        @empty{
+          <h3 class="text-green-500">No</h3>
+        }
+        
+      </tbody>
+    </table>
+    
+  </div>
+  

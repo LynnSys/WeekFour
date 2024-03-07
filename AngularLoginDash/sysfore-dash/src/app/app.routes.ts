@@ -14,7 +14,7 @@ export const routes: Routes = [
     },
     {
         path:"",
-        component: LoginComponent
+        component: ProductsComponent
     },
     {
         path:"products",

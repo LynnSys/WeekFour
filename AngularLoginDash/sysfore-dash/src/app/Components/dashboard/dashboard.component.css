@@ -2,14 +2,12 @@
     box-sizing:border-box;
 }
 
-body{
-    background-color: #e8ecef
-}
+
 .inner-body{
     margin: 0;
     font-size: 12px;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    background-color: #b9bde1;
+    background-color: hsl(234, 40%, 80%);
 }
 
 .logo-header{
@@ -17,7 +15,7 @@ body{
     align-items: center;
     justify-content: space-around;
     padding:5px; */
-    background-color: #2e3192;
+    background-color: #2e3192
 }
 
 .logo{
@@ -61,61 +59,32 @@ a:hover{
     color: white;
 }
 
-.cards{
-    width:100%;
+.card{
+    color:white;
 }
-
-.cards ul{
-    text-transform: uppercase;
-    color:black;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px;
-    gap: 5%;
-}
-
-.cards ul li{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    list-style: none;
-    font-size: 14px;
-    /* height: 60px; */
-    padding: 30px;
-    gap:25%;
-    width: 25%;
-    text-align: center;
-}
-
-.card1{
+#card1{
     background-color: #01a89e;
 }
 
-.card2{
+#card2{
     background-color: #29aae3;
 }
 
-.card3{
+#card3{
     
     background-color:#ee704a;
 }
 
-.card4{
+#card4{
     background-color:#f8931f;
 }
 
 .main-content{
-    display: flex;
     background-color: white;
-    justify-content: center;
-    padding:30px;
 }
 
 .main-body-picture{
     width: 250px;
-    height: 100px;
     margin-right: 20px;
 }
 
@@ -126,21 +95,9 @@ a:hover{
 
 footer{
     text-align: center;
-    bottom:0;
     width: -webkit-fill-available;
     background-color: #ffffff;
-    position:absolute;
     height:40px;
-}
-
-.outer-body{
-    min-height:100vh;
-    position: relative;
-    padding-bottom: 40px;
-}
-.footer-content{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding:10px;
+    position:fixed;
+    bottom:0;
 }
