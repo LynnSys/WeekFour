@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, inject } from '@angular/core';
 import { ProdService } from '../../services/prod.service';
 
@@ -7,17 +6,17 @@ import { ProdService } from '../../services/prod.service';
   standalone: true,
   imports: [],
   templateUrl: './products.component.html',
-  styleUrl: './products.component.css'
+  styleUrl: './products.component.css',
+  providers: [ProdService]
 })
 export class ProductsComponent implements OnInit{
 
-  constructor(private http:HttpClient){}
+  constructor(private prodService:ProdService){}
   // prods:any[]=[]
   prods:any[] | undefined;
-  private prodService = inject (ProdService);
 
   ngOnInit(): void {
-    //this.fetchProds();
+    // this.fetchProds();
     this.loadPosts();
   }
   //   this.http.get("https://dummyjson.com/products")

@@ -25,7 +25,7 @@ export class LoginComponent {
     username: new FormControl('', [
       Validators.required,
       Validators.minLength(4),
-      Validators.email,
+      Validators.email
     ]),
     password: new FormControl('',[
       Validators.required,
