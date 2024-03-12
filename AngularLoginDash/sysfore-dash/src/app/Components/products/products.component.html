@@ -1,4 +1,5 @@
   
+  <!--Header of the page: logo + user name-->
   <header>
     <div class="logo-header d-flex space-around align-items-center py-1 px-3">
       <img class="logo" src="./assets/images/main-logo.svg" alt="logo">
@@ -7,6 +8,7 @@
           <div class="greetings">Hello Welcome</div>
         </div>
       </div>
+    <!--Navbar-->
     <div class="col">
       <ul class="nav justify-content-start py-2 px-3">
         <li class="nav-item">
@@ -24,16 +26,23 @@
   <div class="container bg-light m-5 p-4">
     <div class="heading d-flex space-around">
       <div class="heading-left">
+        <!--Header above Table-->
         <h5 class="fw-bold m-0">Product List</h5>
         <p style="font-size:12px;">View and add all your products here</p>
       </div>
       <div class="heading-right">
-        <a href="#" class="btn btn-primary" style="color:whitesmoke">Add Products</a>
+        <!--Add Products Button-->
+        <button href="#" class="btn btn-primary" style="color:whitesmoke" (click)="modalPopUp()">
+          Add Product
+        </button>
+        
       </div>
       
     </div>
+    <!--Table-->
     <table class="table table-striped">
       <thead>
+        <!--Header titles of the Table-->
         <tr>
           <th scope="col">#</th>
           <th scope="col">TITLE</th>
@@ -44,7 +53,8 @@
         </tr>
       </thead>
       <tbody>
-        @for (prod of prods; track prod.id){
+        <!--using http call in prod.service to fetch data from the api-->
+        @for (prod of prodService.prods; track prod.id){
           <tr>
             <th scope="row">{{prod.id}}</th>
             <td>{{prod.title}}</td>
@@ -52,12 +62,11 @@
             <td>{{prod.rating}}</td>
             <td>{{prod.brand}}</td>
             <td style="font-size: 5px;">
-              <button type="button" class="m-1 btn btn-warning" style="font-size: 14px;">Edit</button>
+              <button type="button" class="m-1 btn btn-warning" style="font-size: 14px;" (click)="editProduct(prod.id)">Edit</button>
               <button type="button" class="m-1 p-1 btn btn-danger" style="font-size: 14px;">Delete</button>
             </td>
           </tr>
         }
-        
         @empty{
           <h3 class="text-green-500">No</h3>
         }

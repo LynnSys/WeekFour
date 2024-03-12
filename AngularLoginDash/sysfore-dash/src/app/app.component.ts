@@ -4,6 +4,8 @@ import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { ProductsComponent } from './Components/products/products.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './Components/login/login.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ProdService } from './services/prod.service';
 
 
 
@@ -18,7 +20,8 @@ import { LoginComponent } from './Components/login/login.component';
     HttpClientModule
   ],
   templateUrl:'./app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
+  providers: [NgbModal,ProdService]
 })
 export class AppComponent {
 }

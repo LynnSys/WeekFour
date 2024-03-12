@@ -1,0 +1,43 @@
+
+<div class="cont d-flex align-items-center justify-content-center">
+    <div class="container-fluid d-flex justify-content-center">
+        
+        <div class="row onlyrow ">
+            <div class="col bg-white onlycol lg-6 ">
+                <div class="card pt-4 px-4 border-0 w-100 h-100">
+                    <h3 class="fw-bold ">Login</h3>
+                    <p class="opacity-50 fs-6">Lorem ipsum dolor sit amet, 
+                        consectetur adipisicing elit.
+                    </p>
+                    <form [formGroup]="loginForm">
+                    <label class="fw-bold fs-6 my-2">Username</label>
+                    <input type="text" placeholder="yourname@gmail.com" class="mt-1 py-3 form-control" formControlName="username"  />
+                    @if(username?.errors?.['required']){
+                        <span>Username is required</span>
+                    }
+                    @else if(username?.errors?.['minLength(4)']){
+                        <span>Username should be more the 3 character</span>
+                    }
+                    @else if(username?.errors?.['email']){
+                        <span>Username should be in email format</span>
+                    }
+                    
+                    <label class="fw-bold w-100 fs-6 my-2 mt-3">Password</label>
+                    <input type="password" placeholder="********" class="mt-1 py-3 form-control" formControlName="password" />
+                    @if(password?.errors?.['required']){
+                        <span>Password is required</span>
+                    }
+                    @else if(password?.errors?.['minLength(4)']){
+                        <span>password should be more the 3 character</span>
+                    }
+                    <button (click)="onLogin()" [disabled]="!loginForm.valid" class="py-3 w-100 mt-4 border-0 bg-success text-white">
+                        Login your account
+                    </button>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
