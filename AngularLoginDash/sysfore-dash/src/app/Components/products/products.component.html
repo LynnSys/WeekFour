@@ -32,13 +32,57 @@
       </div>
       <div class="heading-right">
         <!--Add Products Button-->
-        <button href="#" class="btn btn-primary" style="color:whitesmoke" (click)="modalPopUp()">
-          Add Product
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+        (click)="productsmodalopen()">
+          Add products
         </button>
         
       </div>
       
     </div>
+
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+          <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header px-3">
+              <h4 class="modal-title">Add Product</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="productsmodalclose()">
+              </button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body m-3">
+              <form  (ngSubmit)="addProduct()">
+                <label for="title" class="mb-1 fw-bold">Title</label><br>
+                <input type="text" name="title" [(ngModel)]="newproduct.title" placeholder="Title" class="w-100 p-2 mb-4">
+                <label for="price" class="mb-1 fw-bold">Price</label><br>
+                <input type="text" name="price" [(ngModel)]="newproduct.price" placeholder="Price" class="w-100 p-2 mb-4 ">
+                <label for="rating" class="mb-1 fw-bold">Rating</label><br>
+                <input type="text" name="rating" [(ngModel)]="newproduct.rating" placeholder="Rating" class="w-100 p-2 mb-4">
+                <label for="brand" class="mb-1 fw-bold">Brand</label><br>
+                <select name="brand" placeholder="Brand" class="w-100 p-2 mb-4" [(ngModel)]="newproduct.brand">
+                          <option value="Apple">Apple</option>
+                          <option value="Samsung">Samsung</option>
+                          <option value="Oppo">Oppo</option>
+                          <option value="Huawei">Huawei</option>
+                      </select>
+
+                      
+                      <div class="modal-footer d-flex justify-content-end">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                              (click)="productsmodalclose()">Cancel</button>
+                          <button type="submit" class="btn btn-success">Save</button>
+                      </div>
+
+                  </form>
+
+              </div>
+            
+          </div>
+      </div>
+  </div>
+
     <!--Table-->
     <table class="table table-striped">
       <thead>
@@ -54,25 +98,23 @@
       </thead>
       <tbody>
         <!--using http call in prod.service to fetch data from the api-->
-        @for (prod of prodService.prods; track prod.id){
+        @for (prod of products; track prod.id){
           <tr>
-            <th scope="row">{{prod.id}}</th>
+            <th scope="row">{{$index+1}}</th>
             <td>{{prod.title}}</td>
             <td>{{prod.price}}</td>
             <td>{{prod.rating}}</td>
             <td>{{prod.brand}}</td>
             <td style="font-size: 5px;">
-              <button type="button" class="m-1 btn btn-warning" style="font-size: 14px;" (click)="editProduct(prod.id)">Edit</button>
-              <button type="button" class="m-1 p-1 btn btn-danger" style="font-size: 14px;">Delete</button>
+              <button type="button" class="m-1 btn btn-warning" style="font-size: 14px;" (click)="editProduct($index)">Edit</button>
+              <button type="button" class="btn btn-danger" (click)="deleteProduct($index)">Delete</button>
             </td>
           </tr>
         }
         @empty{
-          <h3 class="text-green-500">No</h3>
+          <h5 class="m-5">No Products to Display</h5>
         }
         
       </tbody>
     </table>
-    
   </div>
-  

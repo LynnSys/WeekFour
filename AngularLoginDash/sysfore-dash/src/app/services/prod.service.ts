@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
+import { Observable, take } from 'rxjs';
 
 const BASE_URL = "https://dummyjson.com/products"
 
@@ -12,23 +13,9 @@ export class ProdService implements OnInit {
   ngOnInit(): void {
     
   }
-  prods:any[] =[];
-  
-  getProdsAll(){
-    return this.http.get<any[]>(BASE_URL)
-  }
-  setProds(info:any[]){
-     this.prods = info;
-     console.log(this.prods + "setting the value")
+  getproducts(): Observable<any> {
+    return this.http.get(BASE_URL).pipe(take(6));
   }
 
-  getProds():any[]{
-    // console.log("getprods()")
-    return this.prods;
-    }
-  // pushProds(info:any){
-  //   this.prods.push(info);
-  //   console.log(this.prods);
-  // }
 
 }
