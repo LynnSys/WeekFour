@@ -1,14 +1,12 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ProdService } from '../../services/prod.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalpopupComponent } from '../modalpopup/modalpopup.component';
-import { EditproductComponent } from '../editproduct/editproduct.component';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [ModalpopupComponent, EditproductComponent, FormsModule],
+  imports: [FormsModule],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css',
   providers: [ProdService]
